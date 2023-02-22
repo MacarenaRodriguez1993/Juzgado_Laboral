@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { format } from "date-fns";
 import {
   clearDetailsAbogado,
   clearDetailsLicencia,
@@ -13,6 +14,7 @@ const TableLicence = () => {
   const dispatch = useDispatch();
   const allLicencias = useSelector((state) => state.allLicencias);
   const allAbogados = useSelector((state) => state.abogados);
+  const user = localStorage.getItem("user");
   useEffect(() => {
     dispatch(getAllLicencias());
     dispatch(getAllAbogados());
@@ -61,29 +63,33 @@ const TableLicence = () => {
                 })}
 
                 <th>
-                  {a.fechaI.slice(0, 10)}
-                  {/* {format(new Date(a.fechaI), "yyyy-MMM-dd")} */}
+                  {/* {a.fechaI.slice(0, 10)} */}
+                  {format(new Date(a.fechaI), "dd-MM-yy")}
                 </th>
                 <th>{a.dias}</th>
-                <th>{a.fechaF.slice(0, 10)}</th>
+                {/* <th>{a.fechaF.slice(0, 10)}</th> */}
+                <th>{format(new Date(a.fechaF), "dd-MM-yy")}</th>
                 <th>
                   <Link to={`/details/${a.id}`}>
                     <button className="btn btn-success mx-1 ">
                       <i class="bi bi-eye"></i>
                     </button>
                   </Link>
-                  <Link to={`/updateLicencia/${a.id}`}>
-                    <button className="btn btn-primary mx-1">
-                      <i class="bi bi-pencil-square"></i>
+                  {user && (
+                    <Link to={`/updateLicencia/${a.id}`}>
+                      <button className="btn btn-primary mx-1">
+                        <i class="bi bi-pencil-square"></i>
+                      </button>
+                    </Link>
+                  )}
+                  {user && (
+                    <button
+                      className="btn btn-danger mx-1"
+                      onClick={() => deleted(a.id)}
+                    >
+                      <i class="bi bi-trash"></i>
                     </button>
-                  </Link>
-
-                  <button
-                    className="btn btn-danger mx-1"
-                    onClick={() => deleted(a.id)}
-                  >
-                    <i class="bi bi-trash"></i>
-                  </button>
+                  )}
                 </th>
               </tr>
             </tbody>
