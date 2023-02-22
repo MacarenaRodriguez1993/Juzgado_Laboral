@@ -15,19 +15,22 @@ const Navbar = () => {
             <i class="bi bi-bank" style={{ fontSize: "1.5rem" }}></i>
           </Link>
           <h4 className="p-2">Licencias Laboral III</h4>
-          <Link to="/login">
-            <button
-              class="btn btn-success navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <i class="bi bi-person-fill"></i>
-            </button>
-          </Link>
+
+          <button
+            class="btn btn-success navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+          >
+            <i class="bi bi-person-fill"></i>
+          </button>
+
           <div
             class="collapse navbar-collapse "
+            id="navbarSupportedContent"
             style={{ justifyContent: "end" }}
           >
             {user && (
