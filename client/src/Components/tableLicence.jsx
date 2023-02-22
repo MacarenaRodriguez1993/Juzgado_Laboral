@@ -42,7 +42,6 @@ const TableLicence = () => {
       >
         <thead className="text-center">
           <tr>
-            <th>Id</th>
             <th>Abogado</th>
             <th>Inicio</th>
             <th>Cantidad de dias</th>
@@ -54,7 +53,6 @@ const TableLicence = () => {
           return (
             <tbody className="text-center ">
               <tr>
-                <th>{a.id}</th>
                 {allAbogados?.map((b) => {
                   if (a.abogadoId === b.id) {
                     return (
