@@ -50,15 +50,7 @@ const App = () => {
               </PrivateRoutes>
             }
           />
-          <Route
-            exact
-            path="/details/:id"
-            element={
-              <PrivateRoutes>
-                <Details />
-              </PrivateRoutes>
-            }
-          />
+          <Route exact path="/details/:id" element={<Details />} />
           <Route exact path="/formFeriado" element={<FormFeriado />} />
           <Route
             exact

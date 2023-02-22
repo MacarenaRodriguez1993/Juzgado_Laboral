@@ -60,7 +60,8 @@ const FormularioLicencia = () => {
           allAbogados.find((a) => a.id == licencia.abogadoId).apellido
         } ${allAbogados.find((a) => a.id == licencia.abogadoId).nombre}.
           Fecha de inicio ${licencia.fechaI.slice(0, 10)}.
-          Cantidad de dias: ${licencia.dias}`,
+          Cantidad de dias: ${licencia.dias}.
+          Fecha de Finalizacion :${licencia.fechaF}`,
         icon: "success",
         button: "OK!",
       });
@@ -78,7 +79,8 @@ const FormularioLicencia = () => {
           allAbogados.find((a) => a.id == licencia.abogadoId).apellido
         } ${allAbogados.find((a) => a.id == licencia.abogadoId).nombre}.
         Fecha de inicio ${licencia.fechaI.slice(0, 10)}.
-        Cantidad de dias: ${licencia.dias}`,
+        Cantidad de dias: ${licencia.dias}
+        Fecha de Finalizacion :${licencia.fechaF}`,
         icon: "success",
         button: "OK!",
       });

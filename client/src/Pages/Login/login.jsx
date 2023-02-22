@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useAuth } from "../../Context/authContext";
 
 const Login = () => {
@@ -20,6 +21,11 @@ const Login = () => {
   };
   return (
     <div className="container pt-5 w-50">
+      <Link to="/home">
+        <button className="btn btn-warning mb-2">
+          <i class="bi bi-house-door"></i> Volver
+        </button>
+      </Link>
       <h1>Iniciar Sesion</h1>
       <form id="login" onSubmit={(e) => handleSubmit(e)}>
         <div class="mb-3">
