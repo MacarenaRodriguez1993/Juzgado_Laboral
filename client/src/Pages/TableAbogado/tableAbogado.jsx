@@ -9,7 +9,7 @@ import swal from "sweetalert";
 const TableAbogados = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const allAbogados = useSelector((state) => state.allAbogados);
+  const allAbogados = useSelector((state) => state.abogados);
   useEffect(() => {
     dispatch(getAllAbogados());
   }, [dispatch]);
@@ -54,13 +54,15 @@ const TableAbogados = () => {
                   <th>{a.matricula}</th>
                   <th>
                     <Link to={`/updateAbogado/${a.id}`}>
-                      <button className="btn btn-primary mx-1">Editar</button>
+                      <button className="btn btn-primary mx-1">
+                        <i class="bi bi-pencil-fill"></i>
+                      </button>
                     </Link>
                     <button
                       onClick={() => deleted(a.id)}
                       className="btn btn-danger mx-1"
                     >
-                      Eliminar
+                      <i class="bi bi-trash"></i>
                     </button>
                   </th>
                 </tr>

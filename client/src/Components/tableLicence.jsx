@@ -36,10 +36,7 @@ const TableLicence = () => {
   };
   return (
     <div class="table-responsive-sm">
-      <table
-        className="container table  table-hover "
-        style={{ color: "#d8d6d6" }}
-      >
+      <table className="container table" style={{ color: "#d8d6d6" }}>
         <thead className="text-center">
           <tr>
             <th>Abogado</th>
@@ -71,17 +68,21 @@ const TableLicence = () => {
                 <th>{a.fechaF.slice(0, 10)}</th>
                 <th>
                   <Link to={`/details/${a.id}`}>
-                    <button className="btn btn-success mx-1 ">Detalles</button>
+                    <button className="btn btn-success mx-1 ">
+                      <i class="bi bi-eye"></i>
+                    </button>
                   </Link>
                   <Link to={`/updateLicencia/${a.id}`}>
-                    <button className="btn btn-primary mx-1">Editar</button>
+                    <button className="btn btn-primary mx-1">
+                      <i class="bi bi-pencil-square"></i>
+                    </button>
                   </Link>
 
                   <button
                     className="btn btn-danger mx-1"
                     onClick={() => deleted(a.id)}
                   >
-                    Eliminar
+                    <i class="bi bi-trash"></i>
                   </button>
                 </th>
               </tr>
