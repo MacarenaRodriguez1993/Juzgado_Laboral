@@ -64,9 +64,20 @@ const rootReducer = (state = initialState, action) => {
         abogado: updateAbogado,
       };
     case GET_ABOGADO_BY_NAME:
+      let lic = [];
+      for (let i = 0; i < state.allLicencias.length; i++) {
+        for (let j = 0; j < action.payload.length; j++) {
+          if (state.allLicencias[i].abogadoId == action.payload[j].id) {
+            lic.push(state.allLicencias[i]);
+            console.log(lic);
+          }
+        }
+      }
+
       return {
         ...state,
         abogados: action.payload,
+        allLicencias: lic,
       };
     case CLEAR_DETAILS_ABOGADO:
       return {

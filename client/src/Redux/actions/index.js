@@ -143,7 +143,6 @@ export const getAbogadoByName = (name) => {
   return async (dispatch) => {
     try {
       const abogadoByName = await axios.get(`${api_URL}/abogados?name=${name}`);
-      console.log(abogadoByName);
       dispatch({
         type: GET_ABOGADO_BY_NAME,
         payload: abogadoByName.data,

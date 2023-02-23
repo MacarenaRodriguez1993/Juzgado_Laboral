@@ -40,7 +40,10 @@ router.get("/", async (req, res) => {
           },
         },
       });
-      if (abogadosFiltrado.length === 0) return "No se encontraron resultados";
+      if (abogadosFiltrado.length === 0) {
+        abogadosFiltrado = [];
+        return res.status(200).json(abogadosFiltrado);
+      }
       return res.status(200).json(abogadosFiltrado);
     }
   } catch (err) {
