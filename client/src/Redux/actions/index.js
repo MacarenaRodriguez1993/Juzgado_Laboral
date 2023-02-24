@@ -10,7 +10,8 @@ export const GET_ABOGADO_BY_NAME = "GET_ABOGADO_BY_NAME";
 export const DELETE_LICENCIA = "DELETE_LICENCIA";
 export const DELETE_ABOGADO = "DELETE_ABOGADO";
 export const ERROR = "ERROR";
-const api_URL = "https://juzgado.up.railway.app";
+//const api_URL = "https://juzgado.up.railway.app";
+const api_URL = "http://localhost:3001";
 
 /* ACTION TRAER TODOS LOS ABOGADOS*/
 export const getAllAbogados = () => {
@@ -143,6 +144,7 @@ export const getAbogadoByName = (name) => {
   return async (dispatch) => {
     try {
       const abogadoByName = await axios.get(`${api_URL}/abogados?name=${name}`);
+      console.log(abogadoByName.data);
       dispatch({
         type: GET_ABOGADO_BY_NAME,
         payload: abogadoByName.data,

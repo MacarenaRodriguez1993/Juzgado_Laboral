@@ -52,22 +52,11 @@ const TableLicence = () => {
           return (
             <tbody className="text-center ">
               <tr>
-                {allAbogados?.map((b) => {
-                  if (a.abogadoId === b.id) {
-                    return (
-                      <th>
-                        {b.apellido} {b.nombre}
-                      </th>
-                    );
-                  }
-                })}
-
                 <th>
-                  {/* {a.fechaI.slice(0, 10)} */}
-                  {format(new Date(a.fechaI), "dd-MM-yy")}
+                  {a.abogado.apellido} {a.abogado.nombre}
                 </th>
+                <th>{format(new Date(a.fechaI), "dd-MM-yy")}</th>
                 <th>{a.dias}</th>
-                {/* <th>{a.fechaF.slice(0, 10)}</th> */}
                 <th>{format(new Date(a.fechaF), "dd-MM-yy")}</th>
                 <th>
                   <Link to={`/details/${a.id}`}>

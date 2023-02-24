@@ -47,6 +47,7 @@ const FormularioLicencia = () => {
     }
     licencia.fechaF = addBusinessDays(new Date(licencia.fechaI), diasAux);
     licencia.fechaF = format(licencia.fechaF, "yyyy-MM-dd");
+    licencia.activo = true;
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -72,6 +73,7 @@ const FormularioLicencia = () => {
       });
     } else {
       await fechaFinal();
+      console.log(licencia);
       await dispatch(crearLicencia(licencia));
       swal({
         title: "Licencia Creada con exito!",

@@ -11,5 +11,5 @@ export function PrivateRoutes({ children }) {
     //return navigate("/login");
   }
 
-  return <>{children}</>;
+  return <>({children})</>;
 }

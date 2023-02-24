@@ -1,7 +1,8 @@
 const Router = require("express");
 const router = Router();
 const { Abogado } = require("../db");
-const { Op } = require("sequelize");
+const { Op, where } = require("sequelize");
+const Licencia = require("../models/Licencia");
 
 // RUTA PARA TRAER UN ABOGADO POR SU ID
 router.get("/:id", async (req, res) => {
@@ -26,31 +27,59 @@ router.post("/", async (req, res) => {
 });
 
 //RUTA PARA TRAER EL LISTADO DE TODOS LOS ABOGADOS
+//router.get("/", async (req, res) => {
+//  let { name } = req.query;
+//  try {
+//    if (name === undefined) {
+//      let abogados = await Abogado.findAll();
+//      return res.status(200).json(abogados);
+//    } else {
+//      let abogadosFiltrado = await Abogado.findAll({
+//        where: {
+//          apellido: {
+//            [Op.substring]: `%${name}%`,
+//          },
+//        },
+//      });
+//      if (abogadosFiltrado.length === 0) {
+//        abogadosFiltrado = [];
+//        return res.status(200).json(abogadosFiltrado);
+//      }
+//      return res.status(200).json(abogadosFiltrado);
+//    }
+//  } catch (err) {
+//    return res.status(400).json({ error: err.message });
+//  }
+//});
+//router.get("/", async (req, res) => {
+//  try {
+//    const abogados = await Abogado.findAll({
+//      include: [
+//        {
+//          model: Licencia,
+//          as: "licencias",
+//          attributes: ["fechaI", "dias", "fechaF"],
+//          where: {
+//            activo: true,
+//          },
+//        },
+//      ],
+//      attributes: ["apellido", "nombre"],
+//    });
+//    return res.status(200).json(abogados);
+//  } catch (err) {
+//    return res.status(400).json({ error: err.message });
+//  }
+//});
+
 router.get("/", async (req, res) => {
-  let { name } = req.query;
   try {
-    if (name === undefined) {
-      let abogados = await Abogado.findAll();
-      return res.status(200).json(abogados);
-    } else {
-      let abogadosFiltrado = await Abogado.findAll({
-        where: {
-          apellido: {
-            [Op.substring]: `%${name}%`,
-          },
-        },
-      });
-      if (abogadosFiltrado.length === 0) {
-        abogadosFiltrado = [];
-        return res.status(200).json(abogadosFiltrado);
-      }
-      return res.status(200).json(abogadosFiltrado);
-    }
+    const abogados = await Abogado.findAll();
+    return res.status(200).json(abogados);
   } catch (err) {
     return res.status(400).json({ error: err.message });
   }
 });
-
 // RUTA PARA ACTUALIZAR DAROS DE UN ABOGADO
 router.put("/", async (req, res) => {
   const abogadoEditado = req.body;

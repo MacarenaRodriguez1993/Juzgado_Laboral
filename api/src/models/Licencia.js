@@ -21,5 +21,9 @@ module.exports = (sequelize) => {
       type: DataTypes.DATE,
       allowNull: false,
     },
+    activo: {
+      type: DataTypes.BOOLEAN,
+      default: true,
+    },
   });
 };

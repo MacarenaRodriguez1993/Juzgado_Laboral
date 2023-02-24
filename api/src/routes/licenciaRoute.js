@@ -1,6 +1,8 @@
 const Router = require("express");
 const router = Router();
 const { Licencia } = require("../db");
+const { Abogado } = require("../db");
+const { Op } = require("sequelize");
 
 //RUTA PARA TRAER UNA LICENCIA POR SU ID
 router.get("/:id", async (req, res) => {
@@ -26,14 +28,34 @@ router.post("/", async (req, res) => {
   }
 });
 //RUTA PARA TRAER EL LISTADO DE TODAS LAS LICENCIAS
+//router.get("/", async (req, res) => {
+//  try {
+//    let licencias = await Licencia.findAll();
+//    return res.status(200).json(licencias);
+//  } catch (err) {
+//    return res.status(400).json({ error: err.message });
+//  }
+//});
+
 router.get("/", async (req, res) => {
   try {
-    let licencias = await Licencia.findAll();
+    const licencias = await Licencia.findAll({
+      include: {
+        model: Abogado,
+        as: "abogado",
+        attributes: ["apellido", "nombre"],
+      },
+      attributes: ["fechaI", "dias", "fechaF"],
+      where: {
+        activo: true,
+      },
+    });
     return res.status(200).json(licencias);
   } catch (err) {
     return res.status(400).json({ error: err.message });
   }
 });
+
 //RUTA PARA ACTUALIZAR UNA LICENCIA
 router.put("/", async (req, res) => {
   const licenciaNEW = req.body;
