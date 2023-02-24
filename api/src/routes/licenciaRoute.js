@@ -45,7 +45,7 @@ router.get("/", async (req, res) => {
         as: "abogado",
         attributes: ["apellido", "nombre"],
       },
-      attributes: ["fechaI", "dias", "fechaF"],
+      attributes: ["id", "fechaI", "dias", "fechaF"],
       where: {
         activo: true,
       },
