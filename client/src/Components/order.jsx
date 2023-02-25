@@ -4,10 +4,6 @@ import { alphabeticalOrder } from "../Redux/actions";
 
 const Order = () => {
   const dispatch = useDispatch();
-  const handleOrder = (event) => {
-    dispatch(alphabeticalOrder(event.target.value));
-    document.getElementById("orderPopulation").selectedIndex = 0;
-  };
 
   return (
     <>

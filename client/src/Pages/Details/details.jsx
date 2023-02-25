@@ -52,7 +52,7 @@ const Details = (props) => {
         <h3>Licencia n° {idLic.id}</h3>
         <div className="  card bg-dark p-2">
           {abogado?.map((a) => {
-            if (a.id === parseInt(idLic.id)) {
+            if (parseInt(a.id) === parseInt(idLic.id)) {
               console.log(licencia.abogadoId);
               console.log(a.id);
               return (

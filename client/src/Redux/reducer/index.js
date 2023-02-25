@@ -10,6 +10,7 @@ import {
   DELETE_ABOGADO,
   GET_ABOGADO_BY_NAME,
   ORDER_ALPHABETICAL,
+  SEARCH,
 } from "../actions";
 
 const initialState = {
@@ -18,6 +19,8 @@ const initialState = {
   licenciaDetails: {},
   allLicencias: [],
   allFeriados: [],
+  stateAux: [],
+  licenciaAux: [],
 };
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -25,7 +28,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         allAbogados: action.payload,
-        abogados: action.payload,
+        stateAux: action.payload,
       };
     case GET_ABOGADO:
       return {
@@ -41,6 +44,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         allLicencias: action.payload,
+        licenciaAux: action.payload,
       };
     case GET_FERIADOS:
       return {
@@ -65,29 +69,23 @@ const rootReducer = (state = initialState, action) => {
         abogado: updateAbogado,
       };
     case GET_ABOGADO_BY_NAME:
-      let lic = [];
-      for (let i = 0; i < state.allLicencias.length; i++) {
-        for (let j = 0; j < action.payload.length; j++) {
-          if (state.allLicencias[i].abogadoId == action.payload[j].id) {
-            lic.push(state.allLicencias[i]);
-            console.log(lic);
-          }
-        }
-      }
-
+      //let lic = [];
+      //for (let i = 0; i < state.allLicencias.length; i++) {
+      //  for (let j = 0; j < action.payload.length; j++) {
+      //    if (state.allLicencias[i].abogadoId == action.payload[j].id) {
+      //      lic.push(state.allLicencias[i]);
+      //      console.log(lic);
+      //    }
+      //  }
+      //}
+      console.log(action.payload);
       return {
         ...state,
-        abogados: action.payload,
-        allLicencias: lic,
+        allAbogados: action.payload,
+        //allLicencias: lic,
       };
     case ORDER_ALPHABETICAL:
       let order = action.payload;
-      if (order === "ALL") {
-        return {
-          ...state,
-          allLicencias: [...state.allLicencias],
-        };
-      }
       let licenciasOrder;
       let aux = [...state.allLicencias];
       if (order === "A-Z") {
@@ -104,7 +102,34 @@ const rootReducer = (state = initialState, action) => {
         orderAlphabetical: order,
         page: 0,
       };
-
+    case SEARCH:
+      let name = action.payload;
+      let abogadoMatch = [];
+      let licenciaMatch = [];
+      let aux2 = [...state.allAbogados];
+      let aux3 = [...state.allLicencias];
+      aux2.filter((ab) => {
+        if (ab.apellido.includes(name)) {
+          abogadoMatch.push(ab);
+        }
+      });
+      aux3.filter((l) => {
+        if (l.abogado.apellido.includes(name)) {
+          licenciaMatch.push(l);
+        }
+      });
+      if (name === "") {
+        return {
+          ...state,
+          allAbogados: state.stateAux,
+          allLicencias: state.licenciaAux,
+        };
+      }
+      return {
+        ...state,
+        allAbogados: abogadoMatch,
+        allLicencias: licenciaMatch,
+      };
     case CLEAR_DETAILS_ABOGADO:
       return {
         ...state,

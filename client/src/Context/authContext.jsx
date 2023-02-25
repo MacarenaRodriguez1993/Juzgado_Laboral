@@ -1,5 +1,5 @@
 import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import swal from "sweetalert";
@@ -16,7 +16,7 @@ export const useAuth = () => {
 export function AuthProvider({ children }) {
   const navigate = useNavigate();
   const auth = getAuth(app);
-  const [loading, setLoading] = useState(true);
+
   const login = async (usuario) => {
     return signInWithEmailAndPassword(auth, usuario.email, usuario.password)
       .then((userCredential) => {
@@ -59,7 +59,7 @@ export function AuthProvider({ children }) {
     });
   };
   return (
-    <authContext.Provider value={{ login, logout, loading }}>
+    <authContext.Provider value={{ login, logout }}>
       {children}
     </authContext.Provider>
   );

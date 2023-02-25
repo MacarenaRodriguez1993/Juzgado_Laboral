@@ -11,7 +11,6 @@ const Search = () => {
     setState({
       search: event.target.value,
     });
-    console.log(event.target.value);
     dispatch(getAbogadoByName(event.target.value));
   };
   return (

@@ -9,7 +9,7 @@ import swal from "sweetalert";
 const TableAbogados = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const allAbogados = useSelector((state) => state.abogados);
+  const allAbogados = useSelector((state) => state.allAbogados);
   useEffect(() => {
     dispatch(getAllAbogados());
   }, [dispatch]);
