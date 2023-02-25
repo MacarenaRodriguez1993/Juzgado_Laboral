@@ -9,6 +9,7 @@ import {
   CLEAR_DETAILS_LICENCIA,
   DELETE_ABOGADO,
   GET_ABOGADO_BY_NAME,
+  ORDER_ALPHABETICAL,
 } from "../actions";
 
 const initialState = {
@@ -79,6 +80,31 @@ const rootReducer = (state = initialState, action) => {
         abogados: action.payload,
         allLicencias: lic,
       };
+    case ORDER_ALPHABETICAL:
+      let order = action.payload;
+      if (order === "ALL") {
+        return {
+          ...state,
+          allLicencias: [...state.allLicencias],
+        };
+      }
+      let licenciasOrder;
+      let aux = [...state.allLicencias];
+      if (order === "A-Z") {
+        aux.sort((a, b) => (a.abogado.apellido < b.abogado.apellido ? -1 : 1));
+        licenciasOrder = aux;
+      }
+      if (order === "Z-A") {
+        aux.sort((a, b) => (a.abogado.apellido > b.abogado.apellido ? -1 : 1));
+        licenciasOrder = aux;
+      }
+      return {
+        ...state,
+        allLicencias: licenciasOrder,
+        orderAlphabetical: order,
+        page: 0,
+      };
+
     case CLEAR_DETAILS_ABOGADO:
       return {
         ...state,

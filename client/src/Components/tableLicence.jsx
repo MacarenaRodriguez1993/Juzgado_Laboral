@@ -10,6 +10,7 @@ import {
   getAllLicencias,
 } from "../Redux/actions";
 import swal from "sweetalert";
+import Order from "./order";
 const TableLicence = () => {
   const dispatch = useDispatch();
   const allLicencias = useSelector((state) => state.allLicencias);
@@ -41,7 +42,10 @@ const TableLicence = () => {
       <table className="container table" style={{ color: "#d8d6d6" }}>
         <thead className="text-center">
           <tr>
-            <th>Abogado</th>
+            <th>
+              Abogado
+              <Order />
+            </th>
             <th>Inicio</th>
             <th>Cantidad de dias</th>
             <th>Fin licencia</th>
