@@ -37,9 +37,8 @@ const Details = (props) => {
   //];
 
   useEffect(() => {
-    dispatch(clearDetailsLicencia());
+    console.log(idLic);
     dispatch(getLicencia(idLic.id));
-    dispatch(getAllAbogados());
   }, [dispatch, idLic.id]);
 
   return (
@@ -52,9 +51,8 @@ const Details = (props) => {
         <h3>Licencia n° {idLic.id}</h3>
         <div className="  card bg-dark p-2">
           {abogado?.map((a) => {
-            if (parseInt(a.id) === parseInt(idLic.id)) {
-              console.log(licencia.abogadoId);
-              console.log(a.id);
+            console.log(licencia.abogadoId);
+            if (a.id === licencia.abogadoId) {
               return (
                 <h1 className="text-center pb-2">
                   Abogado : {a.nombre} {a.apellido}
@@ -62,7 +60,13 @@ const Details = (props) => {
               );
             }
           })}
-
+          {/* {licencia.abogado.apellido} */}
+          {
+            <h1>
+              {apellido}
+              {nombre}
+            </h1>
+          }
           <h4>Fecha de Inicio de Licencia: {licencia.fechaI}</h4>
           <h4>Cantidad de dias : {licencia.dias}</h4>
           <div className="d-flex justify-content-around pt-2">

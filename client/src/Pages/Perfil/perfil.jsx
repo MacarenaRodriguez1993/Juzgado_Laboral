@@ -7,16 +7,6 @@ const Perfil = () => {
     <>
       <Navbar />
       <div className="container  d-grid justify-content-center text-center pt-5">
-        <Link to="/formLicencia">
-          <button className="btn btn-warning btn-lg px-5 py-2 m-2 w-100">
-            Agregar Licencia
-          </button>
-        </Link>
-        <Link to="/home">
-          <button className="btn btn-warning btn-lg px-5 py-2 m-2 w-100">
-            Mostrar Licencias
-          </button>
-        </Link>
         <Link to="/formAbogado">
           <button className="btn btn-warning btn-lg px-5 py-2 m-2 w-100">
             Cargar Abogado
@@ -27,9 +17,20 @@ const Perfil = () => {
             Mostar Abogados
           </button>
         </Link>
+        <Link to="/formLicencia">
+          <button className="btn btn-warning btn-lg px-5 py-2 m-2 w-100">
+            Cargar Licencia
+          </button>
+        </Link>
+        <Link to="/home">
+          <button className="btn btn-warning btn-lg px-5 py-2 m-2 w-100">
+            Mostrar Licencias
+          </button>
+        </Link>
+
         <Link to="/formFeriado">
           <button className="btn btn-warning btn-lg px-5 py-2 m-2 w-100">
-            Agregar Feriado
+            Feriados
           </button>
         </Link>
       </div>

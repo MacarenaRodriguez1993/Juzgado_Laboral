@@ -88,19 +88,21 @@ const rootReducer = (state = initialState, action) => {
       let order = action.payload;
       let licenciasOrder;
       let aux = [...state.allLicencias];
+      let aux1 = [...state.allAbogados];
       if (order === "A-Z") {
         aux.sort((a, b) => (a.abogado.apellido < b.abogado.apellido ? -1 : 1));
+        aux1.sort((a, b) => (a.apellido < b.apellido ? -1 : 1));
         licenciasOrder = aux;
       }
       if (order === "Z-A") {
         aux.sort((a, b) => (a.abogado.apellido > b.abogado.apellido ? -1 : 1));
+        aux1.sort((a, b) => (a.apellido > b.apellido ? -1 : 1));
         licenciasOrder = aux;
       }
       return {
         ...state,
         allLicencias: licenciasOrder,
-        orderAlphabetical: order,
-        page: 0,
+        allAbogados: aux1,
       };
     case SEARCH:
       let name = action.payload;

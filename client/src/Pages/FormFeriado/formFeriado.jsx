@@ -7,9 +7,11 @@ import {
   updateLicencia,
 } from "../../Redux/actions";
 import swal from "sweetalert";
-import { addBusinessDays, format, isWithinInterval } from "date-fns";
+import { addBusinessDays, isWithinInterval } from "date-fns";
+import { useNavigate } from "react-router-dom";
 const FormFeriado = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const allLicencias = useSelector((state) => state.allLicencias);
   const [feriado, setFeriado] = useState({
     fecha: "",
@@ -48,8 +50,10 @@ const FormFeriado = () => {
         icon: "success",
         button: "OK!",
       });
-
       recalcular();
+      setTimeout(() => {
+        navigate("/perfil");
+      }, 2000);
     } catch (e) {
       swal({
         title: "Fallo!",
@@ -66,7 +70,7 @@ const FormFeriado = () => {
     <>
       <Navbar />
       <h1 class="d-flex justify-content-center pt-5">Agregar un feriado</h1>
-      <form className="container pt-2" onSubmit={(e) => handleSubmit(e)}>
+      <form className="container pt-2 w-75" onSubmit={(e) => handleSubmit(e)}>
         <input
           type="date"
           class="form-control mt-2 p-2"
@@ -80,6 +84,9 @@ const FormFeriado = () => {
           Agregar
         </button>
       </form>
+      <div className="container ">
+        <button className="btn btn-outline-warning m-5">Ver feriados</button>
+      </div>
     </>
   );
 };

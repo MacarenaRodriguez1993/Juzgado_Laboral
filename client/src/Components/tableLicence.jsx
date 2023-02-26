@@ -40,29 +40,31 @@ const TableLicence = () => {
   return (
     <div class="table-responsive-sm">
       <table className="container table" style={{ color: "#d8d6d6" }}>
-        <thead className="text-center">
+        <thead className="text-left">
           <tr>
             <th>
               Abogado
               <Order />
             </th>
             <th>Inicio</th>
-            <th>Cantidad de dias</th>
+            <th className="text-center">Cantidad de dias</th>
             <th>Fin licencia</th>
-            <th>Detalles</th>
+            <th className="text-center">Detalles</th>
           </tr>
         </thead>
         {allLicencias?.map((a) => {
           return (
-            <tbody className="text-center ">
+            <tbody className="text-left ">
               <tr>
                 <th>
                   {a.abogado.apellido} {a.abogado.nombre}
                 </th>
-                <th>{format(new Date(a.fechaI), "dd-MM-yy")}</th>
-                <th>{a.dias}</th>
-                <th>{format(new Date(a.fechaF), "dd-MM-yy")}</th>
-                <th>
+                {/* <th>{format(new Date(a.fechaI), "dd-MM-yy")}</th> */}
+                <th>{a.fechaI.slice(0, 10)}</th>
+                <th className="text-center">{a.dias}</th>
+                {/* <th>{format(new Date(a.fechaF), "dd-MM-yy")}</th> */}
+                <th>{a.fechaF.slice(0, 10)}</th>
+                <th className="text-center">
                   <Link to={`/details/${a.id}`}>
                     <button className="btn btn-success mx-1 ">
                       <i class="bi bi-eye"></i>

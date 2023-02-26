@@ -5,6 +5,7 @@ import Navbar from "../../Components/navbar";
 import Search from "../../Components/search";
 import { deleteAbogado, getAllAbogados } from "../../Redux/actions";
 import swal from "sweetalert";
+import Order from "../../Components/order";
 
 const TableAbogados = () => {
   const dispatch = useDispatch();
@@ -37,20 +38,23 @@ const TableAbogados = () => {
           style={{ color: "#d8d6d6" }}
           className="container table  table-hover "
         >
-          <thead className="text-center">
+          <thead>
             <tr>
-              <th>Apellido</th>
-              <th>Nombre</th>
+              <th>
+                Apellido y Nombre <Order />
+              </th>
               <th>Matricula</th>
               <th>Detalles</th>
             </tr>
           </thead>
           {allAbogados?.map((a) => {
             return (
-              <tbody className="text-center ">
+              <tbody>
                 <tr>
-                  <th>{a.apellido}</th>
-                  <th>{a.nombre}</th>
+                  <th>
+                    {a.apellido} {a.nombre}
+                  </th>
+
                   <th>{a.matricula}</th>
                   <th>
                     <Link to={`/updateAbogado/${a.id}`}>

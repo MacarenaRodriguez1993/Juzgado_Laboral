@@ -23,7 +23,7 @@ const Search = () => {
               type="search"
               class="form-control "
               id="inputPassword2"
-              placeholder="Buscar"
+              placeholder="Apellido"
               value={state.search}
               onChange={(event) => handlerChange(event)}
             />
