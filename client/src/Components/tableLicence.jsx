@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { format } from "date-fns";
 import {
   clearDetailsAbogado,
   clearDetailsLicencia,
@@ -11,15 +10,14 @@ import {
 } from "../Redux/actions";
 import swal from "sweetalert";
 import Order from "./order";
+import OrderFecha from "./orderFecha";
 const TableLicence = () => {
   const dispatch = useDispatch();
   const allLicencias = useSelector((state) => state.allLicencias);
-  const allAbogados = useSelector((state) => state.abogados);
+
   const user = localStorage.getItem("user");
   useEffect(() => {
     dispatch(getAllLicencias());
-    dispatch(getAllAbogados());
-    dispatch(clearDetailsAbogado());
     dispatch(clearDetailsLicencia());
   }, [dispatch]);
   const deleted = (id) => {
@@ -46,9 +44,13 @@ const TableLicence = () => {
               Abogado
               <Order />
             </th>
-            <th>Inicio</th>
+            <th>
+              Inicio <OrderFecha />
+            </th>
             <th className="text-center">Cantidad de dias</th>
-            <th>Fin licencia</th>
+            <th>
+              Fin licencia <OrderFecha />
+            </th>
             <th className="text-center">Detalles</th>
           </tr>
         </thead>

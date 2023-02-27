@@ -10,6 +10,7 @@ export const GET_ABOGADO_BY_NAME = "GET_ABOGADO_BY_NAME";
 export const DELETE_LICENCIA = "DELETE_LICENCIA";
 export const DELETE_ABOGADO = "DELETE_ABOGADO";
 export const ORDER_ALPHABETICAL = "ORDER_ALPHABETICAL";
+export const ORDEN_FECHA = "ORDEN_FECHA";
 export const SEARCH = "SEARCH";
 export const ERROR = "ERROR";
 //const api_URL = "https://juzgado.up.railway.app";
@@ -228,6 +229,13 @@ export const deleteAbogado = (id) => {
 export const alphabeticalOrder = (order) => {
   return {
     type: ORDER_ALPHABETICAL,
+    payload: order,
+  };
+};
+//ORDEN PARA FECHAS
+export const ordenFechas = (order) => {
+  return {
+    type: ORDEN_FECHA,
     payload: order,
   };
 };
