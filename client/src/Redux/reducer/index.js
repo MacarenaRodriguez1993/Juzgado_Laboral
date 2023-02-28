@@ -11,7 +11,8 @@ import {
   GET_ABOGADO_BY_NAME,
   ORDER_ALPHABETICAL,
   SEARCH,
-  ORDEN_FECHA,
+  ORDEN_FECHAI,
+  ORDEN_FECHAF,
   ACTIVE_LICENCIA,
 } from "../actions";
 
@@ -106,7 +107,7 @@ const rootReducer = (state = initialState, action) => {
         allLicencias: licenciasOrder,
         allAbogados: aux1,
       };
-    case ORDEN_FECHA:
+    case ORDEN_FECHAI:
       let orden = action.payload;
       let auxiliar = [...state.allLicencias];
       if (orden === "ASC") {
@@ -118,6 +119,20 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         allLicencias: auxiliar,
+      };
+
+    case ORDEN_FECHAF:
+      let ordenF = action.payload;
+      let auxiliarF = [...state.allLicencias];
+      if (ordenF === "ASC") {
+        auxiliarF.sort((a, b) => (a.fechaF < b.fechaF ? -1 : 1));
+      }
+      if (ordenF === "DES") {
+        auxiliarF.sort((a, b) => (a.fechaF > b.fechaF ? -1 : 1));
+      }
+      return {
+        ...state,
+        allLicencias: auxiliarF,
       };
     case ACTIVE_LICENCIA:
       let active = action.payload;

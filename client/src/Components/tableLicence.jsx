@@ -10,6 +10,7 @@ import swal from "sweetalert";
 import Order from "./order";
 import OrderFecha from "./orderFecha";
 import Active from "./active";
+import OrderFechaF from "./orderFechaF";
 const TableLicence = () => {
   const dispatch = useDispatch();
   const allLicencias = useSelector((state) => state.allLicencias);
@@ -49,7 +50,7 @@ const TableLicence = () => {
             </th>
             <th className="text-center">Cantidad de dias</th>
             <th>
-              Fin licencia <OrderFecha />
+              Fin licencia <OrderFechaF />
             </th>
             <th className="text-center">Detalles</th>
           </tr>

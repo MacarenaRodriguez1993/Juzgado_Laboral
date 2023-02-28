@@ -10,7 +10,8 @@ export const GET_ABOGADO_BY_NAME = "GET_ABOGADO_BY_NAME";
 export const DELETE_LICENCIA = "DELETE_LICENCIA";
 export const DELETE_ABOGADO = "DELETE_ABOGADO";
 export const ORDER_ALPHABETICAL = "ORDER_ALPHABETICAL";
-export const ORDEN_FECHA = "ORDEN_FECHA";
+export const ORDEN_FECHAI = "ORDEN_FECHAI";
+export const ORDEN_FECHAF = "ORDEN_FECHAF";
 export const SEARCH = "SEARCH";
 export const ACTIVE_LICENCIA = "ACTIVE_LICENCIA";
 export const ERROR = "ERROR";
@@ -236,7 +237,14 @@ export const alphabeticalOrder = (order) => {
 //ORDEN PARA FECHAS
 export const ordenFechas = (order) => {
   return {
-    type: ORDEN_FECHA,
+    type: ORDEN_FECHAI,
+    payload: order,
+  };
+};
+//ORDEN PARA FECHAS
+export const ordenFechasF = (order) => {
+  return {
+    type: ORDEN_FECHAF,
     payload: order,
   };
 };
