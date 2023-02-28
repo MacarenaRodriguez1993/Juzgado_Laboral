@@ -45,7 +45,7 @@ router.get("/", async (req, res) => {
         as: "abogado",
         attributes: ["apellido", "nombre"],
       },
-      attributes: ["id", "fechaI", "dias", "fechaF"],
+      attributes: ["id", "fechaI", "dias", "fechaF", "activo"],
     });
     return res.status(200).json(licencias);
   } catch (err) {

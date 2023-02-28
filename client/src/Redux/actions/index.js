@@ -12,6 +12,7 @@ export const DELETE_ABOGADO = "DELETE_ABOGADO";
 export const ORDER_ALPHABETICAL = "ORDER_ALPHABETICAL";
 export const ORDEN_FECHA = "ORDEN_FECHA";
 export const SEARCH = "SEARCH";
+export const ACTIVE_LICENCIA = "ACTIVE_LICENCIA";
 export const ERROR = "ERROR";
 //const api_URL = "https://juzgado.up.railway.app";
 const api_URL = "http://localhost:3001";
@@ -237,6 +238,13 @@ export const ordenFechas = (order) => {
   return {
     type: ORDEN_FECHA,
     payload: order,
+  };
+};
+//LICENCIAS ACTIVAS O INACTIVAS
+export const activaLicencias = (active) => {
+  return {
+    type: ACTIVE_LICENCIA,
+    payload: active,
   };
 };
 //Limpio detalles

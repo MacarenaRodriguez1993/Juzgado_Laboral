@@ -12,6 +12,7 @@ import {
   ORDER_ALPHABETICAL,
   SEARCH,
   ORDEN_FECHA,
+  ACTIVE_LICENCIA,
 } from "../actions";
 
 const initialState = {
@@ -117,6 +118,30 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         allLicencias: auxiliar,
+      };
+    case ACTIVE_LICENCIA:
+      let active = action.payload;
+      let auxiliarLicencias = [...state.allLicencias];
+      let activos = [];
+      if (active === "activos") {
+        for (let i = 0; i < auxiliarLicencias.length; i++) {
+          if (auxiliarLicencias[i].activo === true) {
+            activos.push(auxiliarLicencias[i]);
+          }
+        }
+        return {
+          ...state,
+          allLicencias: activos,
+        };
+      }
+      if (active === "todos") {
+        return {
+          ...state,
+          allLicencias: [...state.licenciaAux],
+        };
+      }
+      return {
+        ...state,
       };
     case SEARCH:
       let name = action.payload;
