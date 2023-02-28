@@ -2,13 +2,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import Navbar from "../../Components/navbar";
-import {
-  clearDetailsLicencia,
-  getAllAbogados,
-  getLicencia,
-} from "../../Redux/actions";
+import { getLicencia } from "../../Redux/actions";
 
-const Details = (props) => {
+const Details = () => {
   const idLic = useParams();
   const dispatch = useDispatch();
   const licencia = useSelector((state) => state.licenciaDetails);
@@ -37,7 +33,6 @@ const Details = (props) => {
   //];
 
   useEffect(() => {
-    console.log(idLic);
     dispatch(getLicencia(idLic.id));
   }, [dispatch, idLic.id]);
 
@@ -45,7 +40,7 @@ const Details = (props) => {
     <>
       <Navbar />
       <Link to="/home">
-        <button>volver</button>
+        <button className="btn btn-dark">Volver</button>
       </Link>
       <div className="container">
         <h3>Licencia n° {idLic.id}</h3>
@@ -60,13 +55,6 @@ const Details = (props) => {
               );
             }
           })}
-          {/* {licencia.abogado.apellido} */}
-          {
-            <h1>
-              {apellido}
-              {nombre}
-            </h1>
-          }
           <h4>Fecha de Inicio de Licencia: {licencia.fechaI}</h4>
           <h4>Cantidad de dias : {licencia.dias}</h4>
           <div className="d-flex justify-content-around pt-2">
