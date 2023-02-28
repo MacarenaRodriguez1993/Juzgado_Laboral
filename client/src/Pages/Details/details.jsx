@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import Navbar from "../../Components/navbar";
 import { getLicencia } from "../../Redux/actions";
 
-const Details = (props) => {
+const Details = () => {
   const idLic = useParams();
   const dispatch = useDispatch();
   const licencia = useSelector((state) => state.licenciaDetails);
@@ -40,7 +40,7 @@ const Details = (props) => {
     <>
       <Navbar />
       <Link to="/home">
-        <button>volver</button>
+        <button className="btn btn-dark">Volver</button>
       </Link>
       <div className="container">
         <h3>Licencia n° {idLic.id}</h3>
