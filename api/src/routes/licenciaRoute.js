@@ -46,9 +46,6 @@ router.get("/", async (req, res) => {
         attributes: ["apellido", "nombre"],
       },
       attributes: ["id", "fechaI", "dias", "fechaF"],
-      where: {
-        activo: true,
-      },
     });
     return res.status(200).json(licencias);
   } catch (err) {

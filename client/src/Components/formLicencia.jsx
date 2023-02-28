@@ -7,7 +7,7 @@ import {
   updateLicencia,
 } from "../Redux/actions";
 import swal from "sweetalert";
-import { addBusinessDays, isWithinInterval, format } from "date-fns";
+import { addBusinessDays, isWithinInterval, format, isFuture } from "date-fns";
 import { useParams } from "react-router-dom";
 const FormularioLicencia = () => {
   const dispatch = useDispatch();
@@ -47,7 +47,10 @@ const FormularioLicencia = () => {
     }
     licencia.fechaF = addBusinessDays(new Date(licencia.fechaI), diasAux);
     licencia.fechaF = format(licencia.fechaF, "yyyy-MM-dd");
-    licencia.activo = true;
+    if (!isFuture(new Date(licencia.fechaF))) {
+      console.log(isFuture(new Date(licencia.fechaF)));
+      licencia.activo = isFuture(new Date(licencia.fechaF));
+    }
   };
   const handleSubmit = async (e) => {
     e.preventDefault();

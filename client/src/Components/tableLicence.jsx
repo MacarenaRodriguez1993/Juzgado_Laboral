@@ -2,15 +2,14 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
-  clearDetailsAbogado,
   clearDetailsLicencia,
   deleteLicencia,
-  getAllAbogados,
   getAllLicencias,
 } from "../Redux/actions";
 import swal from "sweetalert";
 import Order from "./order";
 import OrderFecha from "./orderFecha";
+import Active from "./active";
 const TableLicence = () => {
   const dispatch = useDispatch();
   const allLicencias = useSelector((state) => state.allLicencias);
@@ -37,6 +36,7 @@ const TableLicence = () => {
   };
   return (
     <div class="table-responsive-sm">
+      <Active />
       <table className="container table" style={{ color: "#d8d6d6" }}>
         <thead className="text-left">
           <tr>

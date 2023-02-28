@@ -23,7 +23,7 @@ module.exports = (sequelize) => {
     },
     activo: {
       type: DataTypes.BOOLEAN,
-      default: true,
+      defaultValue: true,
     },
   });
 };
