@@ -1,3 +1,4 @@
+import { isFuture } from "date-fns";
 import {
   GET_ABOGADO,
   GET_ALL_ABOGADOS,
@@ -44,10 +45,16 @@ const rootReducer = (state = initialState, action) => {
         licenciaDetails: action.payload,
       };
     case GET_ALL_LICENCIAS:
+      const licencias = action.payload;
+      for (let i = 0; i < licencias.length; i++) {
+        if (!isFuture(new Date(licencias[i].fechaF))) {
+          licencias[i].activo = isFuture(new Date(licencias[i].fechaF));
+        }
+      }
       return {
         ...state,
-        allLicencias: action.payload,
-        licenciaAux: action.payload,
+        allLicencias: licencias,
+        licenciaAux: licencias,
       };
     case GET_FERIADOS:
       return {
