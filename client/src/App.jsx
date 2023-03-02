@@ -15,6 +15,7 @@ import FormFeriado from "./Pages/FormFeriado/formFeriado";
 import TableAbogados from "./Pages/TableAbogado/tableAbogado";
 import { AuthProvider } from "./Context/authContext";
 import { PrivateRoutes } from "./Context/routes";
+import Calculadora from "./Pages/Calculadora/calculadora";
 
 const App = () => {
   return (
@@ -77,6 +78,15 @@ const App = () => {
             element={
               <PrivateRoutes>
                 <FormAbogado />
+              </PrivateRoutes>
+            }
+          />
+          <Route
+            exact
+            path="/formCalculadora"
+            element={
+              <PrivateRoutes>
+                <Calculadora />
               </PrivateRoutes>
             }
           />
