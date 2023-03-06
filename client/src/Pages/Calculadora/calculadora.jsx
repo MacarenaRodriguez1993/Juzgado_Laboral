@@ -36,11 +36,15 @@ const Calculadora = () => {
     }
     resultado = addBusinessDays(new Date(calcular.fecha), diaAux);
     resultado = format(resultado, "EEEE-dd-MMM-yyyy");
-    calcular.fecha = format(new Date(calcular.fecha), "EEEE-dd-MMM-yyyy");
+
     swal({
       title: "Calculo de plazo",
-      text: `El plazo inicia ${calcular.fecha}.
-              El plazo se cumple el dia ${resultado}`,
+      text: `El plazo inicia ${new Date(calcular.fecha)
+        .toUTCString()
+        .slice(0, 16)}.
+              El plazo se cumple el dia ${new Date(resultado)
+                .toUTCString()
+                .slice(0, 16)} a las 10:00AM`,
     });
     setCalcular({
       fecha: "",
@@ -49,12 +53,13 @@ const Calculadora = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(e.target.value);
     await fechaFinal();
   };
   return (
     <>
       <Navbar />
-      <h1>Calcular </h1>
+      <h1 className="text-center">Calcular </h1>
       <form className="container w-50" onSubmit={(e) => handleSubmit(e)}>
         <label>Ingresar fecha</label>
         <input

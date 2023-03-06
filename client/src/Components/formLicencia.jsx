@@ -111,6 +111,7 @@ const FormularioLicencia = () => {
           style={{ backgroundColor: "#C3B8B8" }}
           value={licencia.abogadoId}
           onChange={(e) => handleChange(e)}
+          required
         >
           <option value="">Buscar Abogado</option>
           {allAbogados
@@ -132,6 +133,7 @@ const FormularioLicencia = () => {
           value={licencia.fechaI}
           onChange={(e) => handleChange(e)}
           style={{ backgroundColor: "#C3B8B8" }}
+          required
         />
         <input
           type="number"
@@ -141,6 +143,7 @@ const FormularioLicencia = () => {
           value={licencia.dias}
           onChange={(e) => handleChange(e)}
           style={{ backgroundColor: "#C3B8B8" }}
+          required
         />
         <button className="btn btn-success pt-2 mt-2 w-100">
           Cargar Licencia

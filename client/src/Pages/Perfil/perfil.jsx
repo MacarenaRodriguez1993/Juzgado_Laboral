@@ -35,7 +35,7 @@ const Perfil = () => {
         </Link>
         <Link to="/formCalculadora">
           <button className="btn btn-outline-warning btn-lg px-5 py-2 m-2 w-100">
-            Calcular
+            Calculadora de Plazos
           </button>
         </Link>
       </div>

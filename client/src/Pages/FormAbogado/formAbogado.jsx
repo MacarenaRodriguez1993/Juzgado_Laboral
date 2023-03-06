@@ -76,6 +76,7 @@ const FormAbogado = () => {
           onChange={(e) => handleChange(e)}
           value={abogado.nombre}
           style={{ backgroundColor: "#C3B8B8" }}
+          required
         />
         <input
           type="text"
@@ -85,6 +86,7 @@ const FormAbogado = () => {
           onChange={(e) => handleChange(e)}
           value={abogado.apellido}
           style={{ backgroundColor: "#C3B8B8" }}
+          required
         />
         <input
           type="text"
@@ -94,6 +96,7 @@ const FormAbogado = () => {
           onChange={(e) => handleChange(e)}
           value={abogado.matricula}
           style={{ backgroundColor: "#C3B8B8" }}
+          required
         />
         <button type="submit" class="btn btn-success mt-2 p-2 w-100">
           Cargar nuevo abogado

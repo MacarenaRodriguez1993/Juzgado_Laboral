@@ -5,14 +5,17 @@ import {
   crearFeriado,
   getAllLicencias,
   updateLicencia,
+  getFeriados,
 } from "../../Redux/actions";
 import swal from "sweetalert";
 import { addBusinessDays, isWithinInterval } from "date-fns";
 import { useNavigate } from "react-router-dom";
+import "./formFeriado.css";
 const FormFeriado = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const allLicencias = useSelector((state) => state.allLicencias);
+  const allFeriados = useSelector((state) => state.allFeriados);
   const [feriado, setFeriado] = useState({
     fecha: "",
   });
@@ -63,8 +66,13 @@ const FormFeriado = () => {
       });
     }
   };
+  const visibility = () => {
+    const a = document.getElementById("visible");
+    a.style.display = "block";
+  };
   useEffect(() => {
     dispatch(getAllLicencias());
+    dispatch(getFeriados());
   }, [dispatch]);
   return (
     <>
@@ -85,7 +93,18 @@ const FormFeriado = () => {
         </button>
       </form>
       <div className="container ">
-        <button className="btn btn-outline-warning m-5">Ver feriados</button>
+        <button className="btn btn-outline-warning m-5" onClick={visibility}>
+          Ver feriados
+        </button>
+        <div className="text-center" id="visible">
+          {allFeriados?.map((f) => {
+            return (
+              <>
+                <p>{new Date(f.fecha).toUTCString().slice(0, 16)}</p>
+              </>
+            );
+          })}
+        </div>
       </div>
     </>
   );
