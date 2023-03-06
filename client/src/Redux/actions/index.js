@@ -15,8 +15,8 @@ export const ORDEN_FECHAF = "ORDEN_FECHAF";
 export const SEARCH = "SEARCH";
 export const ACTIVE_LICENCIA = "ACTIVE_LICENCIA";
 export const ERROR = "ERROR";
-//const api_URL = "https://juzgado.up.railway.app";
-const api_URL = "http://localhost:3001";
+const api_URL = "https://juzgado.up.railway.app";
+//const api_URL = "http://localhost:3001";
 
 /* ACTION TRAER TODOS LOS ABOGADOS*/
 export const getAllAbogados = () => {
